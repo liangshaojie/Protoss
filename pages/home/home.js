@@ -22,6 +22,12 @@ Page({
         loadingHidden: true
       });
     });
-  }
 
+    /*获取单品信息*/
+    home.getProductorData((data) => {
+      this.setData({
+        productsArr: data
+      });
+    });
+  }
 })
