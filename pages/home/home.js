@@ -10,10 +10,17 @@ Page({
   },
   _loadData() {
     var id = 1;
-    var data = home.getBannerData(id,(data) => {
+    home.getBannerData(id,(data) => {
       this.setData({
         'bannerArr':data
       })
+    });
+
+    home.getThemeData((data)=>{
+      this.setData({
+        themeArr: data,
+        loadingHidden: true
+      });
     });
   }
 

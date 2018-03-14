@@ -12,6 +12,15 @@ class Home extends Base {
     };
     this.request(params);
   }
+  getThemeData(cb) {
+    var params = {
+      url: 'theme?ids=1,2,3',
+      sCallBack(res) {
+        cb && cb(res)
+      }
+    };
+    this.request(params);
+  }
 }
 
 export { Home};

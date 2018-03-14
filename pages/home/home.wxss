@@ -1,5 +1,5 @@
- /* @import "../tpls/base.wxss";  */
-/* @import "../tpls/products/products-tpl.wxss"; */
+@import "../tpls/base.wxss";  
+@import "../tpls/products/products-tpl.wxss"; 
 .food-container{
 
 }
