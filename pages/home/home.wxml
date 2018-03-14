@@ -1,9 +1,12 @@
 <!--pages/home/home.wxml-->
 <view>
-  <swiper>
-    
+  <swiper indicator-dots='true' autoplay='true' class="swiper">
+    <block wx:for="{{bannerArr}}" wx:key="key">
+      <swiper-item class="banner-item">
+        <image mode="aspectFill" class="item-image" src="{{item.img.url}}"></image>
+      </swiper-item>
+    </block>
   </swiper>
   <view>
-      ceshi 
   </view>
 </view>

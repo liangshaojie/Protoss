@@ -11,7 +11,9 @@ Page({
   _loadData() {
     var id = 1;
     var data = home.getBannerData(id,(data) => {
-      console.log(data);
+      this.setData({
+        'bannerArr':data
+      })
     });
   }
 
