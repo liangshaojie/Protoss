@@ -11,7 +11,9 @@ Page({
   },
   _loadData() {
     var id = 1;
-    var data = home.getBannerData(id);
-    console.log(data);
+    var data = home.getBannerData(id,(res) => {
+      console.log(res);
+    });
   }
+
 })
