@@ -6,13 +6,12 @@ Page({
 
   },
   onLoad() {
-    console.log(5555);
     this._loadData();
   },
   _loadData() {
     var id = 1;
-    var data = home.getBannerData(id,(res) => {
-      console.log(res);
+    var data = home.getBannerData(id,(data) => {
+      console.log(data);
     });
   }
 

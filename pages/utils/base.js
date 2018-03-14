@@ -17,11 +17,13 @@ class Base {
       },
       method: params.method ,
       success: function(res) {
-        params.sCallBack && params.sCallBack(res)
+        params.sCallBack && params.sCallBack(res.data)
       },
       fail: function(res) {
-        params.fCallBack && params.fCallBack(res)
+        params.fCallBack && params.fCallBack(res.data)
       }
     })
   }
 }
+
+export { Base };

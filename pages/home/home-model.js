@@ -1,19 +1,17 @@
-class Home {
-
+import { Base } from '../utils/base.js';
+class Home extends Base {
   constructor() {
-
+    super();
   }
   getBannerData(id,cb) {
-    wx.request({
-      url: 'http://www.z.cn/api/v1/banner/' + id,
-      method: 'GET',
-      data: {},
-      success(res) {
-        cb(res);
-      },
-    })
+    var params = {
+      url:'banner/'+id,
+      sCallBack(res) {
+        cb && cb(res.items)
+      }
+    };
+    this.request(params);
   }
 }
-
 
 export { Home};
