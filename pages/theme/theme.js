@@ -5,12 +5,14 @@ Page({
   data: {
   
   },
+  onReady: function () {
+    wx.setNavigationBarTitle({
+      title: this.data.titleName
+    });
+  },
   onLoad: function (options) {
     this.data.titleName = options.name;
     this.data.id = options.id;
-    wx.setNavigationBarTitle({
-      title: options.name
-    });
     this._loadData();
   },
   _loadData: function (callback) {
