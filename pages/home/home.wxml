@@ -1,10 +1,10 @@
 <!--pages/home/home.wxml-->
 <import src="../tpls/products/products-tpl.wxml"/>
-<view>
+<view class="container home-container" >
 
   <swiper indicator-dots='true' autoplay='true' class="swiper">
     <block wx:for="{{bannerArr}}" wx:key="key">
-      <swiper-item class="banner-item">
+      <swiper-item class="banner-item" data-id="{{item.key_word}}" bindtap="onProductsItemTap">
         <image mode="aspectFill" class="item-image" src="{{item.img.url}}"></image>
       </swiper-item>
     </block>
@@ -15,10 +15,10 @@
       <view class='home-main-header'>精选主题</view>
       <view class='theme-box'>
         <block wx:for="{{themeArr}}" wx:key="key">
-        <view wx:if="{{index == 2}}" class="theme-item big">
+        <view wx:if="{{index == 2}}" class="theme-item big" bindtap="onThemesItemTap" data-id="{{item.id}}" data-name="{{item.name}}">
           <image src="{{item.topic_img.url}}"></image>
         </view>
-        <view wx:else class="theme-item">
+        <view wx:else class="theme-item" data-id="{{item.id}}" bindtap="onThemesItemTap" data-name="{{item.name}}">
           <image src="{{item.topic_img.url}}"></image>
         </view>
         </block>
