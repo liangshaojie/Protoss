@@ -27,7 +27,43 @@ class Cart extends Base {
     };
   };
 
-  add(item,counts) {
+  cutCounts(id) {
+    this._changeCounts(id, -1);
+  };
+
+  addCounts(id) {
+    this._changeCounts(id, 1);
+  };
+
+  _changeCounts(id, counts) {
+    var cartData = this.getCartDataFromLocal(),
+      hasInfo = this._isHasThatOne(id, cartData);
+    if (hasInfo.index != -1) {
+      if (hasInfo.data.counts > 1) {
+        cartData[hasInfo.index].counts += counts;
+      }
+    }
+    this.execSetStorageSync(cartData);  //更新本地缓存
+  };
+
+  /*
+* 删除某些商品
+*/
+  delete(ids) {
+    if (!(ids instanceof Array)) {
+      ids = [ids];
+    }
+    var cartData = this.getCartDataFromLocal();
+    for (let i = 0; i < ids.length; i++) {
+      var hasInfo = this._isHasThatOne(ids[i], cartData);
+      if (hasInfo.index != -1) {
+        cartData.splice(hasInfo.index, 1);  //删除数组某一项
+      }
+    }
+    this.execSetStorageSync(cartData);
+  }
+
+  add(item, counts) {
     var cartData = this.getCartDataFromLocal();
     if (!cartData) {
       cartData = [];
@@ -46,9 +82,9 @@ class Cart extends Base {
     return cartData;
   }
 
-  getCartDataFromLocal(){
+  getCartDataFromLocal() {
     var res = wx.getStorageSync(this._storageKeyName);
-    if(!res){
+    if (!res) {
       res = [];
     }
     return res;

@@ -23,6 +23,11 @@ Page({
       });
     });
   },
+  onCartTap: function () {
+    wx.switchTab({
+      url: '/pages/cart/cart'
+    });
+  },
   bindPickerChange(event) {
     var index = event.detail.value;
     var selectedCount = this.data.countsArray[index];
