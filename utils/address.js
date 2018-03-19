@@ -14,7 +14,7 @@ class Address extends Base {
     var that = this;
     var param = {
       url: 'address',
-      sCallback: function (res) {
+      sCallBack: function (res) {
         if (res) {
           res.totalDetail = that.setAddressInfo(res);
           callback && callback(res);
@@ -31,7 +31,7 @@ class Address extends Base {
       province: res.provinceName,
       city: res.cityName,
       country: res.countyName,
-      mobile: res.telNumber,
+      mobile: '15618536609',
       detail: res.detailInfo
     };
     return formData;
@@ -42,11 +42,11 @@ class Address extends Base {
     data = this._setUpAddress(data);
     var param = {
       url: 'address',
-      type: 'post',
+      method: 'post',
       data: data,
-      sCallback: function (res) {
+      sCallBack: function (res) {
         callback && callback(true, res);
-      }, eCallback(res) {
+      }, fCallBack(res) {
         callback && callback(false, res);
       }
     };

@@ -17,9 +17,9 @@ Page({
         account: options.account,
         orderStatus: 0
       });
-      // address.getAddress((res) => {
-      //   that._bindAddressInfo(res);
-      // });
+      address.getAddress((res) => {
+        that._bindAddressInfo(res);
+      });
     }else {
       this.data.id = options.id;
     }
@@ -34,11 +34,11 @@ Page({
           totalDetail: address.setAddressInfo(res)
         };
         that._bindAddressInfo(addressInfo);
-        // address.submitAddress(res, (flag) => {
-        //   if (!flag) {
-        //     that.showTips('操作提示', '地址信息更新失败！');
-        //   }
-        // });
+        address.submitAddress(res, (flag) => {
+          if (!flag) {
+            that.showTips('操作提示', '地址信息更新失败！');
+          }
+        });
       },
       fail: function (res){
       } 
