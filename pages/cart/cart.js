@@ -21,6 +21,12 @@ Page({
   onHide: function () {
     cart.execSetStorageSync(this.data.cartData);
   },
+  /*提交订单*/
+  submitOrder: function () {
+    wx.navigateTo({
+      url: '../order/order?account=' + this.data.account + '&from=cart'
+    });
+  },
   /*删除商品*/
   delete: function (event) {
     var id = cart.getDataSet(event, 'id'),

@@ -82,10 +82,20 @@ class Cart extends Base {
     return cartData;
   }
 
-  getCartDataFromLocal() {
+  getCartDataFromLocal(flag) {
     var res = wx.getStorageSync(this._storageKeyName);
     if (!res) {
       res = [];
+    }
+    //在下单的时候过滤不下单的商品，
+    if (flag) {
+      var newRes = [];
+      for (let i = 0; i < res.length; i++) {
+        if (res[i].selectStatus) {
+          newRes.push(res[i]);
+        }
+      }
+      res = newRes;
     }
     return res;
   }
